@@ -9,14 +9,14 @@ import {
     Alert,
   } from "react-native";
   import React, { useState } from "react";
-  
   import {
     Entypo,
     FontAwesome,
     FontAwesome5,
     MaterialIcons,
   } from "@expo/vector-icons";
-  import {firebase} from "../firebase/firebaseConfig.js"
+  import {firebase} from "../firebase/firebaseConfig.js";
+  import bcryptjs from "bcryptjs";
   
   const SignUpScreen = ({navigation,route}) => {
 
@@ -40,9 +40,29 @@ import {
 
         // REGISTERING USER IN FIREBASE ====================================================>
 
+         const registerUser = await firebase.auth().createUserWithEmailAndPassword({
+            email:userDetails.email,
+            password:userDetails.password
+         });
 
+         const { uid,stsTokenManager} =registerUser;
+         const {accessToken} = stsTokenManager;
 
+         //  SAVING USER IN REALTIME DATABASE  ==============================================>
 
+         const hashPassword = await bcryptjs.hash(userDetails.password,12);
+
+         const userData = {
+            uid:uid,
+            name:userDetails.name,
+            email:userDetails.email,
+            password:hashPassword,
+            createdAt:new Date.now()
+         }
+
+         const saveUser = await firebase.database().ref(`UserData/${uid}`).set(userData);
+
+         
 
 
        } catch (error) {
