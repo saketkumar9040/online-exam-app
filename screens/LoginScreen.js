@@ -115,6 +115,7 @@ const styles = StyleSheet.create({
   registerButtonContainer:{
     marginTop:20,
     paddingHorizontal:50,
+    padding:5,
     borderWidth:3,
     borderColor:"green",
     borderRadius:50,

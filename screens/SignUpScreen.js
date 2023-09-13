@@ -6,6 +6,7 @@ import {
     TextInput,
     TouchableOpacity,
     ScrollView,
+    Alert,
   } from "react-native";
   import React, { useState } from "react";
   
@@ -15,8 +16,10 @@ import {
     FontAwesome5,
     MaterialIcons,
   } from "@expo/vector-icons";
+  import {firebase} from "../firebase/firebaseConfig.js"
   
   const SignUpScreen = ({navigation,route}) => {
+
     const [userDetails, setUserDetails] = useState({
       name: "",
       email: "",
@@ -24,7 +27,28 @@ import {
     });
   
      const signUpHandler = async () => {
-       console.log("signing in ...")
+       try {
+        if(userDetails.name ===""){
+            return Alert.alert("Name cannot be empty")
+        }
+        if(userDetails.email ===""){
+            return Alert.alert("E-mail cannot be empty")
+        }
+        if(userDetails.password ===""){
+            return Alert.alert("Password cannot be empty")
+        }
+
+        // REGISTERING USER IN FIREBASE ====================================================>
+
+
+
+
+
+
+       } catch (error) {
+           console.log(error.message)
+           Alert.alert("Error🥵","user registration failed")
+       }
      };
   
     return (
@@ -130,6 +154,7 @@ import {
     registerButtonContainer:{
       marginTop:20,
       paddingHorizontal:50,
+      padding:5,
       borderWidth:3,
       borderColor:"green",
       borderRadius:50,
