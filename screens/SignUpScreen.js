@@ -33,6 +33,11 @@ import {
         }
         if(userDetails.email ===""){
             return Alert.alert("E-mail cannot be empty")
+        }else{
+            const regex = /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/;
+             if(!email.match(regex)){
+                return Alert.alert("E-mail must be in valid format")
+             }
         }
         if(userDetails.password ===""){
             return Alert.alert("Password cannot be empty")
@@ -62,7 +67,7 @@ import {
 
          const saveUser = await firebase.database().ref(`UserData/${uid}`).set(userData);
 
-         
+        
 
 
        } catch (error) {
@@ -184,7 +189,6 @@ import {
       fontWeight:"800",
       color:"green"
     }
-  
   });
   
   
