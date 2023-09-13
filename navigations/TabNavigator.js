@@ -8,7 +8,7 @@ const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator screenOptions={{tabBarStyle:{backgroundColor:"#a569bd"}}}>
       <Tab.Screen
         name="Home"
         component={HomeScreen}
@@ -18,10 +18,11 @@ const TabNavigator = () => {
             <FontAwesome
               name="home"
               size={30}
-              color={focused ? "#a569bd" : "grey"}
+              color={focused ? "#ff0" : "#fff"}
             />
           ),
-          tabBarActiveTintColor: "#a569bd",
+          tabBarActiveTintColor: "#ff0",
+          tabBarInactiveTintColor:"#fff"
         }}
       />
       <Tab.Screen
@@ -33,10 +34,11 @@ const TabNavigator = () => {
             <FontAwesome5
               name="clipboard-list"
               size={24}
-              color={focused ? "#a569bd" : "grey"}
+              color={focused ? "#ff0" : "#fff"}
             />
           ),
-          tabBarActiveTintColor: "#a569bd",
+          tabBarActiveTintColor: "#ff0",
+          tabBarInactiveTintColor:"#fff"
         }}
       />
       <Tab.Screen
@@ -48,10 +50,11 @@ const TabNavigator = () => {
             <FontAwesome
               name="user"
               size={24}
-              color={focused ? "#a569bd" : "grey"}
+              color={focused ? "#ff0" : "#fff"}
             />
           ),
-          tabBarActiveTintColor: "#a569bd",
+          tabBarActiveTintColor: "#ff0",
+          tabBarInactiveTintColor:"#fff"
         }}
       />
     </Tab.Navigator>
