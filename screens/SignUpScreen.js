@@ -69,7 +69,6 @@ const SignUpScreen = ({ navigation, route }) => {
         password: userDetails.password,
         createdAt: new Date().toISOString(),
       };
-      console.log(data)
 
        await firebase
         .database()

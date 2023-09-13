@@ -3,12 +3,13 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginScreen from "../screens/LoginScreen";
 import SignUpScreen from "../screens/SignUpScreen";
 import MainNavigator from "./MainNavigator";
+import { useSelector } from "react-redux";
 
 const Stack = createNativeStackNavigator();
 
 const AuthNavigator = () => {
 
-  const isauth = false;
+  const isauth = useSelector((state)=> state.auth.userData !== null);
 
   return (
     <NavigationContainer>
